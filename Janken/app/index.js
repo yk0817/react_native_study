@@ -1,12 +1,8 @@
-import { stackNavigator } from 'react-navigation'
-import Home from './screens/home'
+import React, { Component } from 'react';
+import Navigator from './routes/stackNavigator';
 
-config RouteConfigs = {
-  Home: {
-    screen: Home,
-  },
+export default class App extends Component {
+  render() {
+    return <Navigator />;
+  }
 }
-
-const App = stackNavigator(Routeconfigs);
-
-export default App = stackNavigator(Routeconfigs);
