@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
 // データのタイトルをリスト表示するコンポーネント
 // キーをタッチすると、stacknavigatorで画面遷移(画面定義は StackNavigator)
-const ListScreen = ({ navigation, screeProps }) => (
+const ListScreen = ({ navigation, screenProps }) => (
   <FlatList
     data={screenProps.economics}
     renderItem={({ item }) => (
@@ -94,7 +94,7 @@ const AddEconItemScreen = () => (
 );
 
 AddEconItemScreen.navigationOptions = {
-  tabBarIcon: ({ tintColor }) => <Entypo size={24} name="add-to-list" color{tintColor} />
+  tabBarIcon: ({ tintColor }) => <Entypo size={24} name="add-to-list" color={tintColor} />
 };
 
 const Tab = TabNavigator({
@@ -104,7 +104,7 @@ const Tab = TabNavigator({
   tabBarOptions: {
     activeTintColor: '#037aff',
     inactiveTintColor: '#737373',
-    showLabel: false
+    showLabel: false,
   },
 });
 
