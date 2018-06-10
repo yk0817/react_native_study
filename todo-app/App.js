@@ -7,6 +7,7 @@ import { StyleSheet,
    TouchableOpacity,
    ScrollView,
   } from 'react-native';
+  import TodoList from './TodoList';
 
 export default class App extends React.Component<{}> {
   state = {
@@ -39,15 +40,7 @@ export default class App extends React.Component<{}> {
       >
         <Text style={styles.addButtonText}>ADD</Text>
       </TouchableOpacity>
-        <ScrollView style={styles.scrollView}>
-          {
-            this.state.todos.map((todo, index) => (
-              <View key={todo+index} style={styles.todoContainer}>
-                <Text>{todo}</Text>
-              </View>
-            ))
-          }
-        </ScrollView>
+        <TodoList todos={this.state.todos} />
       </View>
     );
   }
