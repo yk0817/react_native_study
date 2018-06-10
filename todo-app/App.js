@@ -18,12 +18,19 @@ export default class App extends React.Component<{}> {
   onChangeText(newTodo){
     this.setState({ newTodo });
   }
+  
   onPressAdd() {
     const { newTodo } = this.state;
     this.setState({
       newTodo: '',
       todos: [newTodo, ...this.state.todos],
     })
+  }
+  
+  onPressDelete(index){
+    this.setState({
+      todos: this.state.todos.filter((t, i) => i !== index),
+    });
   }
   
   render() {
@@ -40,7 +47,10 @@ export default class App extends React.Component<{}> {
       >
         <Text style={styles.addButtonText}>ADD</Text>
       </TouchableOpacity>
-        <TodoList todos={this.state.todos} />
+        <TodoList 
+          todos={this.state.todos}
+          onPressDelete={(index) => this.onPressDelete(index)}
+        />
       </View>
     );
   }
