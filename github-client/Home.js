@@ -25,10 +25,15 @@ export default class App extends React.Component<{}> {
         if (refreshing) {
           this.setState({ items });
         } else {
-          this.setState({ items: [...this.state.items, ...items] });
+          this.setState({ items: [...this.state.items, ...items],refreshing });
         }
     });        
   }
+  
+  navigateToDetail(item){
+    this.props.navigation.navigate('Detail', { item });
+  }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -37,7 +42,11 @@ export default class App extends React.Component<{}> {
         </TouchableOpacity>
         <FlatList
           data={this.state.items}
-          renderItem={({ item }) => <Text style={{padding: 20}}>{item.name}</Text>}
+          renderItem={({ item }) =>
+            <TouchableOpacity onPress={() => this.navigateToDetail(item) }>
+              <Text style={{padding: 20}}>{item.name}</Text>
+            </TouchableOpacity>
+         }
           keyExtractor={(item) => item.id}
           onEndReached={() => this.fetchRepositories(true)}
           onEndReachedThreshold={0.1}
@@ -55,4 +64,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
 });
-/[^\d]/
