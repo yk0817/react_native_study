@@ -8,7 +8,7 @@ import {
   FlatList,
   TextInput,
   Image,
-  ApπState
+  AppState
 } from 'react-native';
 
 export default class App extends React.Component<{}> {
