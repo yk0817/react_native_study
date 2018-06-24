@@ -7,25 +7,29 @@ import {
 } from 'react-native';
 
 export default class App extends React.Component<{}> {
+  myTurn(){
+    console.log(1);
+  }
+  
   render(){
     return (
       <View style={styles.container}>
         <View style={styles.wrapper}>
           <Text>じゃんけんゲーム</Text>
           <View style={styles.text_wrapper}>
-            <TouchableOpacity style={styles.text1}>
+            <TouchableOpacity onPress={() => this.myTurn() } style={styles.text1}>
               <Text style={styles.text_style}>
                 グー
               </Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.text2}>
+            <TouchableOpacity style={styles.text2} onPress={() => this.myTurn() }>
               <Text style={styles.text_style}>
                 チョキ
               </Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.text3}>
+            <TouchableOpacity style={styles.text3} onPress={() => this.myTurn() }>
               <Text style={styles.text_style}>
                 パー
               </Text>
@@ -42,7 +46,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    // justifyContent: 'center',
   },
   text_wrapper: {
     marginTop: 30,
