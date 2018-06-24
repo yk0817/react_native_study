@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 export default class App extends React.Component<{}> {
-  myTurn(){
-    console.log(1);
+  navigateToOutcome(myDecision){
+    this.props.navigation.navigate('Outcome', { myDecision });
   }
   
   render(){
@@ -17,19 +17,19 @@ export default class App extends React.Component<{}> {
         <View style={styles.wrapper}>
           <Text>じゃんけんゲーム</Text>
           <View style={styles.text_wrapper}>
-            <TouchableOpacity onPress={() => this.myTurn() } style={styles.text1}>
+            <TouchableOpacity onPress={() => this.navigateToOutcome("goo") } style={styles.text1}>
               <Text style={styles.text_style}>
                 グー
               </Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.text2} onPress={() => this.myTurn() }>
+            <TouchableOpacity style={styles.text2} onPress={() => this.navigateToOutcome("choki") }>
               <Text style={styles.text_style}>
                 チョキ
               </Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.text3} onPress={() => this.myTurn() }>
+            <TouchableOpacity style={styles.text3} onPress={() => this.navigateToOutcome("pa") }>
               <Text style={styles.text_style}>
                 パー
               </Text>
