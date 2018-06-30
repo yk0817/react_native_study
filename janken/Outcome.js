@@ -10,24 +10,25 @@ export default class Outcome extends React.Component {
     super(props);
     this.whoWinner();
   }
-  
+
   whoWinner(){
     let myDecision = this.props.navigation.state.params.myDecisions;
     let myJankenHash = this._formatJankenHash(myDecision);
     let compJankenHash = this._compJankenHash();
+
     
     this.state = {
       myJankenHash,
-      compJankenHash,      
+      compJankenHash,
     }
     return this._judge(myJankenHash, compJankenHash);
   };
-  
+
   _judge(myJanken, compJanken){
     let myJankenVal = Object.values(myJanken)[0];
     let compJankenVal = Object.values(compJanken)[0];
     let judgeVal = (myJankenVal - compJankenVal + 3) % 3;
-    
+
     if (judgeVal == 0) {
       return "draw"
     } else if (judgeVal == 2) {
@@ -36,11 +37,11 @@ export default class Outcome extends React.Component {
       return "lose"
     }
   };
-  
+
   _compJankenHash(){
     return [{ goo: 0 }, { choki: 1 }, { pa: 2 }][ Math.floor( Math.random() * 2) ];
   };
-  
+
   _formatJankenHash(myDecision){
     if (myDecision === "goo") {
       return { goo: 0 };
@@ -50,7 +51,7 @@ export default class Outcome extends React.Component {
       return { pa: 2 };
     }
   };
-  
+
   render(){
     const { navigation } = this.props;
     return (
