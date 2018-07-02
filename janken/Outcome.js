@@ -8,7 +8,6 @@ import {
 export default class Outcome extends React.Component {
   constructor(props) {
     super(props);
-    this.whoWinner();
   }
 
   whoWinner(){
@@ -16,11 +15,11 @@ export default class Outcome extends React.Component {
     let myJankenHash = this._formatJankenHash(myDecision);
     let compJankenHash = this._compJankenHash();
 
-    
-    this.state = {
+
+    this.setState = {
       myJankenHash,
       compJankenHash,
-    }
+    };
     return this._judge(myJankenHash, compJankenHash);
   };
 
@@ -56,8 +55,8 @@ export default class Outcome extends React.Component {
     const { navigation } = this.props;
     return (
       <View>
-        <Text>{  }</Text>
-        <Text>勝敗: {  }</Text>
+        <Text>時刻: {new Date().toLocaleTimeString() } </Text>
+        <Text>勝敗: { this.whoWinner() }</Text>
       </View>
     );
   }
