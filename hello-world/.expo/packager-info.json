@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 76018,
-  "expoServerNgrokUrl": "https://rk-d9a.ken-yamamoto.hello-world.exp.direct",
-  "packagerNgrokUrl": "https://packager.rk-d9a.ken-yamamoto.hello-world.exp.direct",
-  "ngrokPid": 76035
+  "expoServerPort": 19001,
+  "packagerPort": 19002,
+  "packagerPid": 79284,
+  "expoServerNgrokUrl": "https://en-wgq.ken-yamamoto.hello-world.exp.direct",
+  "packagerNgrokUrl": "https://packager.en-wgq.ken-yamamoto.hello-world.exp.direct",
+  "ngrokPid": 79301
 }
