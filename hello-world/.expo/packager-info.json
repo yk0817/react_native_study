@@ -1,6 +1,8 @@
 {
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 45171,
+  "expoServerNgrokUrl": "https://55-htj.ken-yamamoto.hello-world.exp.direct",
+  "packagerNgrokUrl": "https://packager.55-htj.ken-yamamoto.hello-world.exp.direct",
+  "ngrokPid": 45191
 }
