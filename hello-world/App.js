@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
+import { AppRegistry, FlatList, StyleSheet, Text, View } from 'react-native';
 
-export default class ButtonBasics extends Component {
-  _onPressButton(){
-    Alert.alert('You tapped the button!')
-  }
+export default class FlatListBasics extends Component {
   render(){
     return(
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="press me"
-            color="#841584"
-            />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Press Me"
-            color="#841584"
+        <FlatList
+          data={[
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
           />
-        </View>
-        <View style={styles.alternativeLayoutButtonContainer} >
-          <Button
-            onPress={this._onPressButton}
-            title="This looks great!"
-          />
-          <Button
-            onPress={this._onPressButton}
-            title="OK!"
-            color="#841584"
-            />
-        </View>
       </View>
     );
   }
@@ -41,17 +26,13 @@ export default class ButtonBasics extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 22
   },
-  buttonContainer: {
-    margin: 20
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 55
   },
-  alternativeLayoutButtonContainer: {
-    margin: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
 })
 
-
-AppRegistry.registerComponent('AwesomeProject', () => ButtonBasics);
+AppRegistry.registerComponent('AwesomeProject', () => FlatListBasics);
