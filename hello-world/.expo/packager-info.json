@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 40269,
-  "expoServerNgrokUrl": "https://a6-rkk.ken-yamamoto.hello-world.exp.direct",
-  "packagerNgrokUrl": "https://packager.a6-rkk.ken-yamamoto.hello-world.exp.direct",
-  "ngrokPid": 40293
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

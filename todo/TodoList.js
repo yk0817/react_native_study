@@ -4,20 +4,20 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity
-} from 'react-native'
+  TouchableOpacity,
+} from 'react-native';
 
 const styles = StyleSheet.create({
-  scrollView: {
+  scrollView : {
     backgroundColor: '#DDD',
   },
-  todoContainer:{
-    flexDirection: 'row',
-    backgroundColor: '#FFF',
-    padding: 10,
-    justifyContent: 'space-between',
+  todoContainer: {
+     flexDirection: 'row',
+     backgroundColor: '#FFF',
+     padding: 10,
+     justifyContent: 'space-between',
   }
-})
+});
 
 export default (props) => (
   <ScrollView style={styles.scrollView}>
@@ -25,11 +25,11 @@ export default (props) => (
       props.todos.map((todo, index) => (
         <View key={todo+index} style={styles.todoContainer}>
           <Text>{todo}</Text>
-          <TouchableOpacity onPress={()=> props.onPressDelete(index) }>
+          <TouchableOpacity onPress={() => props.onPressDelete(index)}>
             <Text>DELETE</Text>
           </TouchableOpacity>
         </View>
       ))
     }
   </ScrollView>
-)
+);

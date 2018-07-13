@@ -1,30 +1,31 @@
-import React from 'react';
-import { StyleSheet,
-   Platform,
-   Text, 
-   View, 
-   TextInput,
-   TouchableOpacity,
-   ScrollView,
-   AsyncStorage,
-  } from 'react-native';
-  import TodoList from './TodoList';
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  AsyncStorage,
+} from 'react-native';
+import TodoList from './TodoList';
 
 export default class App extends React.Component<{}> {
   state = {
     newTodo: '',
     todos: [],
   }
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
     this.loadTodos();
   }
-  
-  onChangeText(newTodo){
+
+  onChangeText(newTodo) {
     this.setState({ newTodo });
   }
-  
+
   onPressAdd() {
     const { newTodo } = this.state;
     this.setState({
@@ -32,40 +33,40 @@ export default class App extends React.Component<{}> {
       todos: [newTodo, ...this.state.todos],
     }, () => this.storeTodos());
   }
-  
-  onPressDelete(index){
+
+  onPressDelete(index) {
     this.setState({
-      todos: this.state.todos.filter((t, i) => i !== index),
+      todos: this.state.todos.filter((t, i) => i !== index ),
     }, () => this.storeTodos());
   }
-  
-  storeTodos(){
+
+  storeTodos() {
     const str = JSON.stringify(this.state.todos);
     AsyncStorage.setItem('todos', str);
   }
-  
-  loadTodos(){
+
+  loadTodos() {
     AsyncStorage.getItem('todos').then((str) => {
       const todos = str ? JSON.parse(str) : [];
       this.setState({ todos });
     })
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
         <TextInput
-           value={this.state.newTodo}
-           style={styles.form}
-           onChangeText={text => this.onChangeText(text)}
+          value={this.state.newTodo}
+          style={styles.form}
+          onChangeText={text => this.onChangeText(text)}
         />
-      <TouchableOpacity 
-        style={styles.addButton}
-        onPress={() => this.onPressAdd()}
-      >
-        <Text style={styles.addButtonText}>ADD</Text>
-      </TouchableOpacity>
-        <TodoList 
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => this.onPressAdd()}
+        >
+          <Text style={styles.addButtonText}>ADD</Text>
+        </TouchableOpacity>
+        <TodoList
           todos={this.state.todos}
           onPressDelete={(index) => this.onPressDelete(index)}
         />
@@ -86,18 +87,12 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: '#333',
     padding: 14,
-    marginTop: 10,
     borderRadius: 4,
+    marginTop: 10,
   },
   addButtonText: {
     color: '#FFF',
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  scrollView: {
-    backgroundColor: '#DDD',
-  },
-  todoContainer:{
-    backgroundColor: '#FFF'
-  }
 });
