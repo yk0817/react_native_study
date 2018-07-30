@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, Image } from 'react-native';
-import { ImagePicker } from 'expo';
+import { Constants, Permissions, ImagePicker } from 'expo';
 
 
 class ImagePickerSample extends Component {
@@ -10,17 +10,39 @@ class ImagePickerSample extends Component {
 
   // カメラ起動
   _takePhoto = async () => {
-    console.log(this);
-    let result = await ImagePicker.launchCameraAsync({
-      allowsEditing: false
-    });
-    console.log(result);
-    if (!result.canceled) {
-      this.setState({image: result.uri});
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+
+    if (status === 'granted') {
+      ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+      }).then(result => {
+        if (!result.cancelled) {
+          console.log(1);
+          this.setState({image: result.uri});
+        }
+      })
+      .catch(err => console.log(err))
     }
+    // console.log(this);
+    // Permissions.askAsync(Permissions.CAMERA);
+    // Permissions.askAsync(Permissions.CAMERA_ROLL);
+    // let result = await ImagePicker.launchCameraAsync({
+    //   allowsEditing: true
+    // });
+    // console.log(result);
+    // if (!result.canceled) {
+    //   this.setState({image: result.uri});
+    // }
+    //
+    //
   }
   // カメラロールから選択
   _pickImage = async () => {
+    const { cameraRollStatus } = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+    const { cameraStatus } = await Permissions.askAsync(Permissions.CAMERA);
+
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [16, 9]
